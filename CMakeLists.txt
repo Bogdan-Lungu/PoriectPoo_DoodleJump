@@ -114,7 +114,12 @@ add_executable(${PROJECT_NAME} main.cpp
         GAME/Game.cpp
         GAME/Game.h
         ENEMIES/Enemies.h
-        OPSTACLES/OBSTACLES.h)
+        OBSTACLES/OBSTACLES.h
+        OBSTACLES/OBSTACLES.cpp
+        ENEMIES/Enemies.cpp
+        EXCEPTII/Exceptii.cpp
+        EXCEPTII/Exceptii.h
+)
 
 ###############################################################################
 

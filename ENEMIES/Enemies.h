@@ -1,21 +1,14 @@
-//
-// Created by lungu on 10/31/2023.
-//
-
 #ifndef OOP_PLAYER_H
 #define OOP_PLAYER_H
-
 
 #include <SFML/Graphics.hpp>
 
 
-
 class Enemy{
-private:
+protected:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::Vector2f velocity;
-    //bool hasjumped = false;
 public:
     Enemy();
     ~Enemy();
@@ -30,4 +23,10 @@ public:
 };
 
 
+
+
 #endif //OOP_PLAYER_H
+
+
+
+

@@ -1,22 +1,20 @@
-//
-// Created by lungu on 10/31/2023.
-//
-
 #include "Player.h"
+#include "../EXCEPTII/Exceptii.h"
+#include "../OBSTACLES/OBSTACLES.h"
 #include <iostream>
 
 Doodle::Doodle() {
     velocity = {0.0f, 0.0f};
     texture = sf::Texture();
-    texture.loadFromFile("ASSETS/TEXTURES/Doodle.png"); /////aici nu stiu daca e bine
+    texture.loadFromFile(R"(C:\Users\lungu\CLionProjects\PoriectPoo_DoodleJump\ASSETS\Doodle.png)");
     sprite = sf::Sprite();
+    sprite.setPosition({250.0f, 550.0f});
     sprite.setTexture(texture);
 }
 
     Doodle::~Doodle(){
     std::cout << "Doodle destructor\n";
     }
-
 
     Doodle& Doodle::operator=(const Doodle &doodle) {
         texture = doodle.texture;
@@ -25,8 +23,7 @@ Doodle::Doodle() {
         return *this;
     }
 
-
-Doodle::Doodle(const Doodle& doodle) {
+[[maybe_unused]] Doodle::Doodle(const Doodle& doodle) {
     texture = doodle.texture;
     sprite = doodle.sprite;
     velocity = doodle.velocity;
@@ -42,13 +39,36 @@ void Doodle::jump() {
 }
 
 void Doodle::handlekeys() {
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
         jump();
         hasjumped = true;
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
+        move(-6.0f, 0.0f);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+        move(6.0f, 0.0f);
+    }
 }
+
+void Doodle::move(float deltaX, float deltaY) {
+
+    sprite.move(deltaX, deltaY);
+
+
+    if (sprite.getPosition().x < 0) {
+        sprite.setPosition({600.0f, sprite.getPosition().y});
+    }
+
+
+    if (sprite.getPosition().x > 600.0f) {
+        sprite.setPosition({0.0f, sprite.getPosition().y});
+    }
+}
+
+
 
 void Doodle::handle_gravity() {
 
@@ -61,20 +81,39 @@ void Doodle::handle_gravity() {
     if (velocity.y > max_fall_spd){
         velocity.y = max_fall_spd;}
 }
-void Doodle::update() {
+void Doodle::update(const Obstacle& obstacles) {
     handlekeys();
     handle_gravity();
-    check_collision();
+
+
+    check_collision(obstacles);
+
     sprite.move(velocity);
 }
-void Doodle::check_collision() {
-    if(sprite.getPosition().y>550.0f || sprite.getPosition().y<-35.0f )
-    die();
+
+void Doodle::check_collision(Obstacle obstacle) {
+
+    if (sprite.getPosition().y > 550.0f || sprite.getPosition().y < -35.0f) {
+        die();
+        throw DoodleOutOfScreenException();
+    }
+
+    sf::FloatRect doodleBounds = sprite.getGlobalBounds();
+    sf::FloatRect upperObstacleBounds = obstacle.getSprite().getGlobalBounds();
+    sf::FloatRect lowerObstacleBounds = obstacle.getLowerBounds();
+
+
+    if (doodleBounds.intersects(upperObstacleBounds) || doodleBounds.intersects(lowerObstacleBounds)) {
+        die();
+        throw DoodleCollisionException();
+    }
 }
+
+
 
 void Doodle::die()
 {
     hasjumped = false;
-    sf::Vector2f startPosition(100.0f, 300.0f);
+    sf::Vector2f startPosition(250.0f, 550.0f);
     sprite.setPosition(startPosition);
 }
