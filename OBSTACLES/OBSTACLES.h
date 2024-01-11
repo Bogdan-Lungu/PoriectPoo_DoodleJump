@@ -12,8 +12,8 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Vector2f velocity;
-    float gapY{};
-    float gapHeight{};
+    [[maybe_unused]] float gapY{};
+    [[maybe_unused]] float gapHeight{};
 public:
     sf::FloatRect getLowerBounds() const {
         sf::FloatRect upperBounds = sprite.getGlobalBounds();
@@ -40,7 +40,7 @@ public:
 
 // Clasa "BreakingPlatforms" reprezinta o derivare a clasei "Obstacle",
 // singura diferenta fiind faptul ca aceste platforme nu vor avea colision si vor disparea dupa interactiune
-class BreakingPlatform : public Obstacle {
+class [[maybe_unused]] BreakingPlatform : public Obstacle {
 public:
     [[maybe_unused]] BreakingPlatform(float upperHeight, float playerSpace);
     ~BreakingPlatform();
@@ -53,7 +53,7 @@ public:
 
 // Clasa "JumpAndBreakPlatform" reprezint tot o derivare a clasei "Obstacle"
 // Singura diferenta fata de BreakingPlatforms fiind faptul ca acestea vor avea o singura interactiune iar dupa acea vor disparea
-class JumpAndBreakPlatform : public Obstacle {
+class [[maybe_unused]] JumpAndBreakPlatform : public Obstacle {
 private:
     bool hasBeenJumpedOn;
 public:
@@ -65,11 +65,11 @@ public:
 
     void update() override;
 
-    [[maybe_unused]] void jumpOnPlatform(); // De adaugat caracteristici "jump"
+    [[maybe_unused]] void jumpOnPlatform();
 };
 
-// La fel ca si clasele de sus, doar ca misccarea este doar pe axa X
-class MovingPlatform : public Obstacle {
+
+class [[maybe_unused]] MovingPlatform : public Obstacle {
 public:
     [[maybe_unused]] MovingPlatform(float upperHeight, float playerSpace);
     ~MovingPlatform();
@@ -78,7 +78,7 @@ public:
     [[maybe_unused]] MovingPlatform(const MovingPlatform& movingPlatform);
 
     void update() override;
-    void movingPlatform(); // De adaugat caracteristici "moving stml"
+    void movingPlatform();
 
 };
 
