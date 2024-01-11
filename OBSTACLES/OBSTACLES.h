@@ -65,7 +65,7 @@ public:
 
     void update() override;
 
-    [[maybe_unused]] void jumpOnPlatform();
+    //[[maybe_unused]] void jumpOnPlatform();
 };
 
 

@@ -93,11 +93,11 @@ void JumpAndBreakPlatform::update() {
     }
 }
 
-[[maybe_unused]] void JumpAndBreakPlatform::jumpOnPlatform() {
-    // Add logic for jumping behavior
-    // ...
-    hasBeenJumpedOn = true;
-}
+//[[maybe_unused]] void JumpAndBreakPlatform::jumpOnPlatform() {
+//    // Add logic for jumping behavior
+//    // ...
+//    hasBeenJumpedOn = true;
+//}
 
 [[maybe_unused]] MovingPlatform::MovingPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {}
 
