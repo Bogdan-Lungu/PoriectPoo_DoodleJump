@@ -15,7 +15,7 @@ private:
 public:
     Doodle();
     ~Doodle();
-    Doodle& operator = (const Doodle& doodle);
+    Doodle& operator = ([[maybe_unused]] const Doodle& doodle);
 
     [[maybe_unused]] Doodle(const Doodle& doodle);
     friend std::ostream& operator <<(std::ostream& out, const Doodle& doodle);

@@ -18,7 +18,7 @@ Doodle::Doodle()
     std::cout << "Doodle destructor\n";
     }
 
-Doodle& Doodle::operator=(const Doodle &doodle) {
+Doodle& Doodle::operator=([[maybe_unused]] const Doodle &doodle) {
     texture = doodle.texture;
     sprite = doodle.sprite;
     velocity = doodle.velocity;
@@ -26,10 +26,7 @@ Doodle& Doodle::operator=(const Doodle &doodle) {
 }
 
 
-[[maybe_unused]] Doodle::Doodle(const Doodle& doodle) {
-    texture = doodle.texture;
-    sprite = doodle.sprite;
-    velocity = doodle.velocity;
+Doodle::Doodle(const Doodle& doodle): sprite(doodle.sprite),texture(doodle.texture), velocity(doodle.velocity){
 }
 
 std::ostream& operator<<(std::ostream& out, const Doodle& doodle) {

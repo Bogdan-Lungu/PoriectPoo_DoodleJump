@@ -23,10 +23,8 @@ Obstacle& Obstacle::operator=(const Obstacle& obstacle) {
     return *this;
 }
 
-Obstacle::Obstacle([[maybe_unused]] const Obstacle& obstacle) {
-    texture = obstacle.texture;
-    sprite = obstacle.sprite;
-    velocity = obstacle.velocity;
+Obstacle::Obstacle([[maybe_unused]] const Obstacle& obstacle): texture(obstacle.texture),sprite(obstacle.sprite),velocity(obstacle.velocity){
+
 }
 
 std::ostream& operator<<(std::ostream& out, const Obstacle& obstacle) {

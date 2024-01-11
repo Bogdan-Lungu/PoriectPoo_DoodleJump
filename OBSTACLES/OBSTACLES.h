@@ -31,7 +31,7 @@ public:
     Obstacle([[maybe_unused]] const Obstacle& opstacle);
     friend std::ostream& operator<<(std::ostream & out, const Obstacle& opstacle);
 
-    void update();
+    virtual void update();
     void die();
 
     sf::Sprite getSprite() { return sprite; }
@@ -63,7 +63,7 @@ public:
 
     [[maybe_unused]] JumpAndBreakPlatform(const JumpAndBreakPlatform& jumpAndBreakPlatform);
 
-    void update();
+    void update() override;
 
     [[maybe_unused]] void jumpOnPlatform(); // De adaugat caracteristici "jump"
 };
@@ -77,7 +77,7 @@ public:
 
     [[maybe_unused]] MovingPlatform(const MovingPlatform& movingPlatform);
 
-    void update();
+    void update() override;
     void movingPlatform(); // De adaugat caracteristici "moving stml"
 
 };
