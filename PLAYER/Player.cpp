@@ -3,25 +3,28 @@
 #include "../OBSTACLES/OBSTACLES.h"
 #include <iostream>
 
-Doodle::Doodle() {
-    velocity = {0.0f, 0.0f};
-    texture = sf::Texture();
+
+Doodle::Doodle()
+        : sprite(),
+          texture(),
+          velocity(0.0f, 0.0f) {
     texture.loadFromFile(R"(C:\Users\lungu\CLionProjects\PoriectPoo_DoodleJump\ASSETS\Doodle.png)");
-    sprite = sf::Sprite();
     sprite.setPosition({250.0f, 550.0f});
     sprite.setTexture(texture);
 }
+
 
     Doodle::~Doodle(){
     std::cout << "Doodle destructor\n";
     }
 
-    Doodle& Doodle::operator=(const Doodle &doodle) {
-        texture = doodle.texture;
-        sprite = doodle.sprite;
-        velocity = doodle.velocity;
-        return *this;
-    }
+Doodle& Doodle::operator=(const Doodle &doodle) {
+    texture = doodle.texture;
+    sprite = doodle.sprite;
+    velocity = doodle.velocity;
+    return *this;
+}
+
 
 [[maybe_unused]] Doodle::Doodle(const Doodle& doodle) {
     texture = doodle.texture;

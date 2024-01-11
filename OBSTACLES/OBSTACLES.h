@@ -28,7 +28,7 @@ public:
     Obstacle([[maybe_unused]] float upperHeight, [[maybe_unused]] float playerSpace);
     ~Obstacle();
     Obstacle& operator=(const Obstacle& obstacle);
-    Obstacle(const Obstacle& opstacle);
+    Obstacle([[maybe_unused]] const Obstacle& opstacle);
     friend std::ostream& operator<<(std::ostream & out, const Obstacle& opstacle);
 
     void update();
@@ -42,12 +42,13 @@ public:
 // singura diferenta fiind faptul ca aceste platforme nu vor avea colision si vor disparea dupa interactiune
 class BreakingPlatform : public Obstacle {
 public:
-    BreakingPlatform(float upperHeight, float playerSpace);
+    [[maybe_unused]] BreakingPlatform(float upperHeight, float playerSpace);
     ~BreakingPlatform();
     BreakingPlatform& operator=(const BreakingPlatform& breakingPlatform);
-    BreakingPlatform(const BreakingPlatform& breakingPlatform);
 
-    void jumpOnPlatform(); // Add method for jumping behavior
+    [[maybe_unused]] BreakingPlatform(const BreakingPlatform& breakingPlatform);
+
+    [[maybe_unused]] void jumpOnPlatform(); // Add method for jumping behavior
 };
 
 // Clasa "JumpAndBreakPlatform" reprezint tot o derivare a clasei "Obstacle"
@@ -56,22 +57,25 @@ class JumpAndBreakPlatform : public Obstacle {
 private:
     bool hasBeenJumpedOn;
 public:
-    JumpAndBreakPlatform(float upperHeight, float playerSpace);
+    [[maybe_unused]] JumpAndBreakPlatform(float upperHeight, float playerSpace);
     ~JumpAndBreakPlatform();
     JumpAndBreakPlatform& operator=(const JumpAndBreakPlatform& jumpAndBreakPlatform);
-    JumpAndBreakPlatform(const JumpAndBreakPlatform& jumpAndBreakPlatform);
+
+    [[maybe_unused]] JumpAndBreakPlatform(const JumpAndBreakPlatform& jumpAndBreakPlatform);
 
     void update();
-    void jumpOnPlatform(); // De adaugat caracteristici "jump"
+
+    [[maybe_unused]] void jumpOnPlatform(); // De adaugat caracteristici "jump"
 };
 
 // La fel ca si clasele de sus, doar ca misccarea este doar pe axa X
 class MovingPlatform : public Obstacle {
 public:
-    MovingPlatform(float upperHeight, float playerSpace);
+    [[maybe_unused]] MovingPlatform(float upperHeight, float playerSpace);
     ~MovingPlatform();
     MovingPlatform& operator=(const MovingPlatform& movingPlatform);
-    MovingPlatform(const MovingPlatform& movingPlatform);
+
+    [[maybe_unused]] MovingPlatform(const MovingPlatform& movingPlatform);
 
     void update();
     void movingPlatform(); // De adaugat caracteristici "moving stml"

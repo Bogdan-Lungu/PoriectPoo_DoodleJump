@@ -1,11 +1,11 @@
 #include "OBSTACLES.h"
 #include <iostream>
 
-Obstacle::Obstacle([[maybe_unused]] float upperHeight, [[maybe_unused]] float playerSpace) {
-    velocity = {-0.0f, 0.0f};
-    texture = sf::Texture();
+Obstacle::Obstacle([[maybe_unused]] float upperHeight, [[maybe_unused]] float playerSpace)
+        : texture(),
+          sprite(),
+          velocity(0.0f, 0.0f) {
     texture.loadFromFile(R"(C:\Users\lungu\CLionProjects\PoriectPoo_DoodleJump\ASSETS\Verde.png)");
-    sprite = sf::Sprite();
     sprite.setTexture(texture);
     sprite.setPosition({300.0f, 300.0f});
 }
@@ -23,7 +23,7 @@ Obstacle& Obstacle::operator=(const Obstacle& obstacle) {
     return *this;
 }
 
-Obstacle::Obstacle(const Obstacle& obstacle) {
+Obstacle::Obstacle([[maybe_unused]] const Obstacle& obstacle) {
     texture = obstacle.texture;
     sprite = obstacle.sprite;
     velocity = obstacle.velocity;
@@ -46,7 +46,7 @@ void Obstacle::die() {
     sprite.setPosition(startPosition);
 }
 
-BreakingPlatform::BreakingPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {}
+[[maybe_unused]] BreakingPlatform::BreakingPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {}
 
 BreakingPlatform::~BreakingPlatform() {
     std::cout << "BreakingPlatform destructor\n";
@@ -59,15 +59,15 @@ BreakingPlatform& BreakingPlatform::operator=(const BreakingPlatform& breakingPl
     return *this;
 }
 
-BreakingPlatform::BreakingPlatform(const BreakingPlatform& breakingPlatform) : Obstacle(breakingPlatform) {}
+[[maybe_unused]] BreakingPlatform::BreakingPlatform(const BreakingPlatform& breakingPlatform) : Obstacle(breakingPlatform) {}
 
-void BreakingPlatform::jumpOnPlatform() {
+[[maybe_unused]] void BreakingPlatform::jumpOnPlatform() {
     // Add logic for jumping behavior
     // ...
     die();  // For example, breaking platforms disappear after interaction
 }
 
-JumpAndBreakPlatform::JumpAndBreakPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {
+[[maybe_unused]] JumpAndBreakPlatform::JumpAndBreakPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {
     hasBeenJumpedOn = false;
 }
 
@@ -83,7 +83,7 @@ JumpAndBreakPlatform& JumpAndBreakPlatform::operator=(const JumpAndBreakPlatform
     return *this;
 }
 
-JumpAndBreakPlatform::JumpAndBreakPlatform(const JumpAndBreakPlatform& jumpAndBreakPlatform) : Obstacle(jumpAndBreakPlatform) {
+[[maybe_unused]] JumpAndBreakPlatform::JumpAndBreakPlatform(const JumpAndBreakPlatform& jumpAndBreakPlatform) : Obstacle(jumpAndBreakPlatform) {
     hasBeenJumpedOn = jumpAndBreakPlatform.hasBeenJumpedOn;
 }
 
@@ -95,13 +95,13 @@ void JumpAndBreakPlatform::update() {
     }
 }
 
-void JumpAndBreakPlatform::jumpOnPlatform() {
+[[maybe_unused]] void JumpAndBreakPlatform::jumpOnPlatform() {
     // Add logic for jumping behavior
     // ...
     hasBeenJumpedOn = true;
 }
 
-MovingPlatform::MovingPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {}
+[[maybe_unused]] MovingPlatform::MovingPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {}
 
 MovingPlatform::~MovingPlatform() {
     std::cout << "MovingPlatform destructor\n";
@@ -114,7 +114,7 @@ MovingPlatform& MovingPlatform::operator=(const MovingPlatform& movingPlatform) 
     return *this;
 }
 
-MovingPlatform::MovingPlatform(const MovingPlatform& movingPlatform) : Obstacle(movingPlatform) {}
+[[maybe_unused]] MovingPlatform::MovingPlatform(const MovingPlatform& movingPlatform) : Obstacle(movingPlatform) {}
 
 void MovingPlatform::update() {
     movingPlatform();  // Assuming you have a function for moving behavior
