@@ -59,11 +59,11 @@ BreakingPlatform& BreakingPlatform::operator=(const BreakingPlatform& breakingPl
 
 [[maybe_unused]] BreakingPlatform::BreakingPlatform(const BreakingPlatform& breakingPlatform) : Obstacle(breakingPlatform) {}
 
-[[maybe_unused]] void BreakingPlatform::jumpOnPlatform() {
-    // Add logic for jumping behavior
-    // ...
-    die();  // For example, breaking platforms disappear after interaction
-}
+//[[maybe_unused]] void BreakingPlatform::jumpOnPlatform() {
+//    // Add logic for jumping behavior
+//    // ...
+//    die();  // For example, breaking platforms disappear after interaction
+//}
 
 [[maybe_unused]] JumpAndBreakPlatform::JumpAndBreakPlatform(float upperHeight, float playerSpace) : Obstacle(upperHeight, playerSpace) {
     hasBeenJumpedOn = false;

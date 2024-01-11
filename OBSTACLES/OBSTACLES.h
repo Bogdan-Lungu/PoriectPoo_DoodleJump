@@ -48,7 +48,7 @@ public:
 
     [[maybe_unused]] BreakingPlatform(const BreakingPlatform& breakingPlatform);
 
-    [[maybe_unused]] void jumpOnPlatform(); // Add method for jumping behavior
+    //[[maybe_unused]] void jumpOnPlatform(); // Add method for jumping behavior
 };
 
 // Clasa "JumpAndBreakPlatform" reprezint tot o derivare a clasei "Obstacle"
