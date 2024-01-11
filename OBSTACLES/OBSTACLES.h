@@ -12,8 +12,8 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Vector2f velocity;
-    [[maybe_unused]] float gapY{};
-    [[maybe_unused]] float gapHeight{};
+    //[[maybe_unused]] float gapY{};
+    //[[maybe_unused]] float gapHeight{};
 public:
     sf::FloatRect getLowerBounds() const {
         sf::FloatRect upperBounds = sprite.getGlobalBounds();
