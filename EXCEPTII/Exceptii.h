@@ -27,7 +27,7 @@ class DoodleCollisionException : public DoodleException {
 public:
     explicit DoodleCollisionException();
 };
-
+               
 class DoodleOutOfScreenException : public DoodleException {
 public:
     explicit DoodleOutOfScreenException();

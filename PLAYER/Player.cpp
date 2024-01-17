@@ -111,8 +111,7 @@ void Doodle::check_collision(Obstacle obstacle) {
 
 
 
-void Doodle::die()
-{
+void Doodle::die() {
     hasjumped = false;
     sf::Vector2f startPosition(250.0f, 550.0f);
     sprite.setPosition(startPosition);
